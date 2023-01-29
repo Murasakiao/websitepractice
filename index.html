@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Engineering Surver Form</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-color: #15171c;
+    color: #f5f6f7;
+    font-family: Tahoma;
+    font-size: 16px;
+    }
+
+    h1, p {
+        margin: 1em auto;
+        text-align: center;
+    }
+
+    form {
+        width: 60vw;
+        max-width: 700px;
+        min-width: 500px;
+        margin: 0 auto;
+        padding-bottom: 2em;
+    }
+
+    fieldset {
+        border: none;
+        padding: 2rem 0;
+        background-color: #867d197d;
+    }
+
+    label {
+        display: block;
+        margin: 0.5rem auto;
+        width: 80%;
+    }
+
+    input, textarea, select {
+        margin: 10px 0 0 0;
+        width: 100%;
+        min-height: 2em;
+    }
+
+    .inline {
+        width: unset;
+        margin: 0 0.5em 0 0;
+        vertical-align: middle;
+    }
+
+    input[type="submit"] {
+        display: block;
+        width: 80%;
+        margin: 1em auto;
+        height: 2em;
+        font-size: 1.1rem;
+        background-color: #d7901e;
+        border: none;
+        min-width: 300px;
+    }
+
+    textarea {
+        margin: auto auto;
+        display: block;
+        min-width: 300px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Electrical Engineering Survey Form</h1>
+    <p id="description">This survey is for the post graduates students of Electrical Engineering</p>
+    <form id="survey-form">
+      <fieldset>
+        <label for="name" id="name-label">Name <input id="name" name="name" type="text" placeholder="Enter your name: Engr." required /></label>
+        <label for="email" id="email-label">Email <input id="email" type="email" placeholder="Enter your Email" required /></label>
+        <label for="age" id="number-label">Age (optional) <input id="number" type="number" min="13" max="120" placeholder="Age" /></label>
+        <label>Which career path do you want to take after graduation?
+          <select id="dropdown">
+            <option value="">Select current role</option>
+            <option value="1">Electrical Engineer</option>
+            <option value="2">Electrician</option>
+            <option value="3">Electrical Engineering Instructor</option>
+          </select>
+        </label>
+        <label>Would you recommend Electrical Engineering to a friend?
+          <label><input type="radio" value="1" name="recommend" class="inline">Definitely</label>
+          <label><input type="radio" value="2" name="recommend" class="inline">Maybe</label>
+          <label><input type="radio" value="3" name="recommend" class="inline">Not sure</label>
+        </label>
+        <label>What comppanies do you want to apply for? (Check all that apply)
+          <label><input type="checkbox" value="1" class="inline">The Boring Company</label>
+          <label><input type="checkbox" value="2" class="inline">Tesla</label>
+          <label><input type="checkbox" value="3" class="inline">Boston Robotics</label>
+          <label><input type="checkbox" value="4" class="inline">GoldenGate Electric Corp.</label>
+          <label><input type="checkbox" value="5" class="inline">Meralco</label>
+          <label><input type="checkbox" value="6" class="inline">Esamelco</label>
+        </label>
+        <label>Add a description: 
+          <textarea placeholder="Enter your plans for the future here..."></textarea>
+        </label>
+        <input type="submit" id="submit" value="Submit">
+      </fieldset>
+    </form>
+  </body>
+  <footer>This website is created by Julius Studios</footer>
+</html>
