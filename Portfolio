@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julius Darang — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f7f5;
+    --bg-card: #fafaf8;
+    --border: #e8e8e4;
+    --border-strong: #d0d0c8;
+    --text: #1a1a18;
+    --text-muted: #6b6b66;
+    --text-light: #9a9a94;
+    --accent: #2563eb;
+    --accent-soft: #eff4ff;
+    --green: #16a34a;
+    --green-soft: #f0fdf4;
+    --tag-bg: #f0f0ec;
+    --tag-text: #4a4a44;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--text); text-decoration: none;
+    font-family: 'DM Mono', monospace;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; color: var(--text-muted); text-decoration: none;
+    font-weight: 500; letter-spacing: 0.01em;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-size: 13px; font-weight: 600;
+    background: var(--text); color: #fff;
+    padding: 7px 16px; border-radius: 6px;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.82; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: flex; align-items: flex-start;
+    gap: 40px;
+  }
+  .hero-avatar {
+    width: 88px; height: 88px; border-radius: 12px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light); font-size: 28px;
+  }
+  .hero-text { flex: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500;
+    color: var(--green);
+    background: var(--green-soft);
+    border: 1px solid #bbf7d0;
+    padding: 3px 10px; border-radius: 20px;
+    margin-bottom: 14px;
+    font-family: 'DM Mono', monospace;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; }
+  .hero-name {
+    font-size: 36px; font-weight: 600; line-height: 1.15;
+    letter-spacing: -0.03em; margin-bottom: 6px;
+    color: var(--text);
+  }
+  .hero-title {
+    font-size: 15px; color: var(--text-muted);
+    font-weight: 400; margin-bottom: 6px;
+  }
+  .hero-location {
+    font-size: 13px; color: var(--text-light);
+    display: flex; align-items: center; gap: 4px;
+    margin-bottom: 20px;
+  }
+  .hero-tagline {
+    font-size: 17px; font-weight: 400; color: var(--text-muted);
+    max-width: 440px; line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 7px;
+    text-decoration: none; transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--text); color: #fff;
+  }
+  .btn-primary:hover { opacity: 0.82; }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .btn-outline:hover { border-color: var(--text); background: var(--bg-soft); }
+  .btn svg { width: 14px; height: 14px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-light);
+    font-family: 'DM Mono', monospace;
+  }
+  .section-link {
+    font-size: 13px; color: var(--accent);
+    text-decoration: none; font-weight: 500;
+  }
+  .section-link:hover { text-decoration: underline; }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 280px; gap: 48px;
+  }
+  .about-bio { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
+  .about-bio p + p { margin-top: 14px; }
+  .stats-grid { display: flex; flex-direction: column; gap: 1px; }
+  .stat-card {
+    padding: 18px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .stat-number {
+    font-size: 28px; font-weight: 600; letter-spacing: -0.04em;
+    color: var(--text); font-family: 'DM Mono', monospace;
+    line-height: 1;
+  }
+  .stat-number span { font-size: 18px; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text-light); margin-top: 3px; }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 6px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item { position: relative; padding-bottom: 32px; padding-left: 24px; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -24px; top: 5px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--border-strong);
+  }
+  .timeline-item.current .timeline-dot {
+    background: var(--accent); border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .timeline-year {
+    font-size: 12px; color: var(--text-light);
+    font-family: 'DM Mono', monospace; margin-bottom: 2px;
+  }
+  .timeline-role { font-size: 15px; font-weight: 600; color: var(--text); }
+  .timeline-company { font-size: 14px; color: var(--text-muted); margin-bottom: 6px; }
+  .timeline-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: flex; flex-direction: column; gap: 24px; }
+  .skill-group-label {
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12px; font-weight: 500;
+    background: var(--tag-bg); color: var(--tag-text);
+    padding: 4px 10px; border-radius: 5px;
+    font-family: 'DM Mono', monospace;
+    border: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .tag:hover { border-color: var(--border-strong); }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+  .project-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .project-arrow { color: var(--text-light); font-size: 18px; margin-top: -1px; }
+  .project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .project-tag {
+    font-size: 11px; font-family: 'DM Mono', monospace;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 2px 8px; border-radius: 4px;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-list { display: flex; flex-direction: column; gap: 1px; }
+  .cert-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    transition: border-color 0.15s;
+  }
+  .cert-item:hover { border-color: var(--border-strong); }
+  .cert-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .cert-issuer { font-size: 12px; color: var(--text-light); margin-top: 1px; }
+  .cert-year {
+    font-size: 12px; color: var(--text-light);
+    font-family: 'DM Mono', monospace;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .contact-info { }
+  .contact-heading { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .contact-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+  .contact-link-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .contact-link-item:hover { color: var(--text); }
+  .contact-link-icon {
+    width: 32px; height: 32px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .form-group { margin-bottom: 12px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-label { display: block; font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .form-input {
+    width: 100%; padding: 9px 12px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 14px; color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  textarea.form-input { resize: vertical; min-height: 96px; }
+  .form-submit {
+    width: 100%; padding: 10px;
+    background: var(--text); color: #fff;
+    border: none; border-radius: 7px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: opacity 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 4px;
+  }
+  .form-submit:hover { opacity: 0.82; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-copy { font-size: 13px; color: var(--text-light); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: var(--text-light); text-decoration: none; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ── SCROLL FADE ── */
+  .fade-in {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 720px) {
+    .hero-inner { flex-direction: column; gap: 24px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">julius<span>.</span>darang</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-avatar">⚡</div>
+      <div class="hero-text">
+        <div class="hero-badge">Open to opportunities</div>
+        <h1 class="hero-name">Julius Darang</h1>
+        <div class="hero-title">Renewable Energy & Power Systems Modelling Engineer</div>
+        <div class="hero-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Philippines
+        </div>
+        <p class="hero-tagline">Designing reliable, sustainable energy systems for a cleaner grid.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            View My Work
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
+          <a href="#contact" class="btn btn-outline">Send Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container fade-in">
+    <div class="section-header">
+      <span class="section-title">About</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>I'm a Renewable Energy and Power Systems Modelling Engineer based in the Philippines, specializing in the design, analysis, and simulation of modern electrical systems. My work spans grid-scale renewable energy projects, power flow studies, and simulation-driven feasibility assessments.</p>
+        <p>I've worked with utilities, developers, and research institutions to bring technically sound, compliant energy projects from concept to deployment. I'm passionate about accelerating the energy transition through rigorous engineering and data-driven modelling.</p>
+        <p>When I'm not running simulations, I'm exploring the intersection of software and power systems — building Python tools to automate analysis workflows and making complex grid data more accessible.</p>
+      </div>
+      <div>
+        <div class="stat-card">
+          <div class="stat-number">2<span>+</span></div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10<span>+</span></div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5<span>+</span></div>
+          <div class="stat-label">Certifications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container fade-in">
+    <div class="section-header">
+      <span class="section-title">Experience</span>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024 — Present</div>
+        <div class="timeline-role">Power Systems Modelling Engineer</div>
+        <div class="timeline-company">Your Current Company</div>
+        <div class="timeline-desc">Renewable energy grid integration studies, power flow and fault analysis using DIgSILENT PowerFactory and ETAP.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2023 — 2024</div>
+        <div class="timeline-role">Electrical Design Engineer</div>
+        <div class="timeline-company">Previous Company</div>
+        <div class="timeline-desc">Designed electrical systems for solar PV and battery storage projects in accordance with IEC and IEEE standards.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2019 — 2023</div>
+        <div class="timeline-role">BS Electrical Engineering</div>
+        <div class="timeline-company">Your University</div>
+        <div class="timeline-desc">Thesis: Power systems modelling study. Graduated with honors.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2015</div>
+        <div class="timeline-role">Hello World ⚡</div>
+        <div class="timeline-company">First line of engineering</div>
+        <div class="timeline-desc">Started the journey into electrical systems.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container fade-in">
+    <div class="section-header">
+      <span class="section-title">Skills & Tools</span>
+      <a href="#" class="section-link">View All →</a>
+    </div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-label">Power Systems & Simulation</div>
+        <div class="tags">
+          <span class="tag">DIgSILENT PowerFactory</span>
+          <span class="tag">ETAP</span>
+          <span class="tag">PSCAD</span>
+          <span class="tag">PSS/E</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Simulink</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Renewable Energy Tools</div>
+        <div class="tags">
+          <span class="tag">Homer Pro</span>
+          <span class="tag">PVsyst</span>
+          <span class="tag">RETScreen</span>
+          <span class="tag">SAM (NREL)</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Design & Drafting</div>
+        <div class="tags">
+          <span class="tag">AutoCAD</span>
+          <span class="tag">AutoCAD Electrical</span>
+          <span class="tag">Revit MEP</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Programming & Data</div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Excel VBA</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Standards & Frameworks</div>
+        <div class="tags">
+          <span class="tag">IEC 60364</span>
+          <span class="tag">IEEE Standards</span>
+          <span class="tag">NEC/PEC</span>
+          <span class="tag">Grid Codes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container fade-in">
+    <div class="section-header">
+      <span class="section-title">Recent Projects</span>
+      <a href="#" class="section-link">View All →</a>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Solar Farm Grid Integration Study</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Power flow and fault analysis for a 50MW solar PV plant. Assessed voltage stability, harmonic distortion, and grid code compliance.</p>
+        <div class="project-tags">
+          <span class="project-tag">DIgSILENT</span>
+          <span class="project-tag">IEC 60364</span>
+          <span class="project-tag">PVsyst</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="proje
